@@ -1,0 +1,74 @@
+        lui x21, %hi(0x0)
+        addi x21, x21, %lo(0x0)
+        lui x3, %hi(0xF)
+        addi x3, x3, %lo(0xF)
+        lui x4, %hi(0xE)
+        addi x4, x4, %lo(0xE)
+        lui x13, %hi(0xA)
+        addi x13, x13, %lo(0xA)
+        lui x14, %hi(0x30)
+        addi x14, x14, %lo(0x30)
+        lui sp, %hi(0x210000)
+        addi sp,sp,%lo(0x210000)
+        lui s0, %hi(0xFFFF0F00)
+        addi s0,s0,%lo(0xFFFF0F00)
+        lui s1, %hi(0xFFFF0B00)
+        addi s1, s1, %lo(0xFFFF0B00)
+        addi x5,x0,0b11100000
+        sw x5, 8(s1)
+        auipc x20, 0xf0f0
+citaj lw x5, 0(s1)
+        andi x5,x5,2
+        beq x5,x0, button
+
+        jal x0,citaj
+button lw x6, 0(s1)
+        andi x6, x6, 1
+        bne x6,x0,buttonDown
+        jal x0,citaj
+buttonDown
+        lw x6, 0(s1)
+        andi x6, x6, 1
+        beq x6,x0,counterup
+        jal x0,buttonDown 
+counterup
+        addi x21,x21,1
+        bge x21, x3, counterreset
+        jal x0,pisi
+counterreset
+        sub x21, x21, x4
+        jal x0, pisi
+pisi
+        addi a0,x0,0x0D
+        jal ra, LCDWR
+        add x17,x0,x21
+        jal ra, obradi
+        beq x10,x14, nojed
+        add a0,x0,x10
+        jal ra, LCDWR
+nojed   
+        add a0,x0,x11
+        jal ra,LCDWR
+        addi a0,x0,0x0A
+        jal ra, LCDWR
+        jal x0,citaj
+obradi
+        bge x17,x13,nodes
+        addi x10,x0,0x30
+        add x11,x0,x17
+        addi x11,x11,0x30
+        jalr x0, 0(ra)
+nodes
+        addi x10,x0,0x31
+        sub x17,x17,x13
+        add x11,x0,x17
+        addi x11,x11,0x30
+        jalr x0,0(ra)
+lcdwr
+        andi a0,a0,0x7F
+        sb a0, 4(s0)
+        ori a0,a0,0x80
+        sb a0, 4(s0)
+        andi a0,a0,0x7F
+        sb a0, 4(s0)
+        jalr x0, 0(ra)

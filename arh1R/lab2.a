@@ -1,0 +1,225 @@
+        ORG 0x00
+        B MAIN
+        ORG 0x18
+        B IRQ_MNG
+
+MAIN
+        MSR CPSR, #0b11010010
+        MOV R13, #0x10000
+        MSR CPSR, #0b11010011
+        MOV R13, #0xFC00
+        
+        MRS R9, CPSR
+        BIC R9, R9, #0b10000000
+        MSR CPSR, R9
+        
+        LDR R0, GPIO2
+        MOV R1, #0b11100000
+        STR R1, [R0, #8]
+        MOV R1, #0b00000000
+        STR R1, [R0, #0]
+        
+        LDR R4, GPIO1
+        ADD R4, R4, #4
+        
+        MOV R3, #1
+        
+        LDR R6, RTC
+        
+        LDR R7, timecon
+        STR R7, [R6, #4]
+        
+        MOV R7, #0b00
+        STR R7, [R6, #16]
+        
+        BL PRINTSTA
+
+MAINLOOP
+        CMP R3, #1
+        BNE NBC
+        
+        LDR R1, [R0, #0]
+        TST R1, #0b00000001
+        Movne r8, #0
+        strne r8, [r6,#0x0C]
+        BEQ MAINLOOP
+
+BUTTONW
+        LDR R1, [R0, #0]
+        TST R1, #0b00000001
+        BNE BUTTONW
+        
+        MOV R3, #2
+        BL PRINTSTA
+        
+        MOV R7, #0
+        STR R7, [R6, #8]
+        MOV R7, #0b11
+        STR R7, [R6, #16]
+
+NBC
+        B MAINLOOP
+
+IRQ_MNG
+        STMFD R13!, {R0-R2, R6-R7, LR}
+        
+        MOV R7, #0
+        STR R7, [R6, #8]
+        
+        CMP R3, #5
+        MOVEQ R3, #1
+        ADDNE R3, R3, #1
+
+        BL PRINTSTA
+        MOV R7, #0
+        STR R7, [R6, #0x0C]
+        CMP R3, #1
+        BNE END_IRQ
+        MOV R7, #0
+        STR R7, [R6, #16]
+
+
+END_IRQ
+        LDMFD R13!, {R0-R2, R6-R7, LR}
+        SUBS PC, LR, #4
+
+PRINTSTA
+        STMFD R13!, {R4-R5, LR}
+        
+        MOV R5, #0x0D
+        BL LCDWR
+        
+        CMP R3, #1
+        BNE NOT_ST1
+        MOV R1, #0b00000000
+        BL PRINTWEL
+        B LEDS
+
+NOT_ST1
+        CMP R3, #2
+        BNE NOT_ST2
+        MOV R1, #0b00100000
+        BL PRINTHEA
+        B LEDS
+
+NOT_ST2
+        CMP R3, #3
+        BNE NOT_ST3
+        MOV R1, #0b01000000
+        BL PRINTCOF
+        B LEDS
+
+NOT_ST3
+        CMP R3, #4
+        BNE NOT_ST4
+        MOV R1, #0b10000000
+        BL PRINTMIL
+        B LEDS
+
+NOT_ST4
+        MOV R1, #0b11100000
+        BL PRINTDON
+
+LEDS
+        STR R1, [R0]
+        mov r5, #0x0A
+        bl LCDWR
+        LDMFD R13!, {R4-R5, LR}
+        MOV PC, LR
+
+PRINTWEL
+        STMFD R13!, {R5, LR}
+        MOV R5, #0x57
+        BL LCDWR
+        MOV R5, #0x45
+        BL LCDWR
+        MOV R5, #0x4C
+        BL LCDWR
+        MOV R5, #0x43
+        BL LCDWR
+        MOV R5, #0x4F
+        BL LCDWR
+        MOV R5, #0x4D
+        BL LCDWR
+        MOV R5, #0x45
+        BL LCDWR
+        LDMFD R13!, {R5, LR}
+        MOV PC, LR
+
+PRINTHEA
+        STMFD R13!, {R5, LR}
+        MOV R5, #0x48
+        BL LCDWR
+        MOV R5, #0x45
+        BL LCDWR
+        MOV R5, #0x41
+        BL LCDWR
+        MOV R5, #0x54
+        BL LCDWR
+        MOV R5, #0x49
+        BL LCDWR
+        MOV R5, #0x4E
+        BL LCDWR
+        MOV R5, #0x47
+        BL LCDWR
+        LDMFD R13!, {R5, LR}
+        MOV PC, LR
+
+PRINTCOF
+        STMFD R13!, {R5, LR}
+        MOV R5, #0x43
+        BL LCDWR
+        MOV R5, #0x4F
+        BL LCDWR
+        MOV R5, #0x46
+        BL LCDWR
+        MOV R5, #0x46
+        BL LCDWR
+        MOV R5, #0x45
+        BL LCDWR
+        MOV R5, #0x45
+        BL LCDWR
+        LDMFD R13!, {R5, LR}
+        MOV PC, LR
+
+PRINTMIL
+        STMFD R13!, {R5, LR}
+        MOV R5, #0x4D
+        BL LCDWR
+        MOV R5, #0x49
+        BL LCDWR
+        MOV R5, #0x4C
+        BL LCDWR
+        MOV R5, #0x4B
+        BL LCDWR
+        LDMFD R13!, {R5, LR}
+        MOV PC, LR
+
+PRINTDON
+        STMFD R13!, {R5, LR}
+        MOV R5, #0x44
+        BL LCDWR
+        MOV R5, #0x4F
+        BL LCDWR
+        MOV R5, #0x4E
+        BL LCDWR
+        MOV R5, #0x45
+        BL LCDWR
+        LDMFD R13!, {R5, LR}
+        MOV PC, LR
+
+LCDWR
+        STMFD R13!, {R5}
+        AND R5, R5, #0x7F
+        STRB R5, [R4]
+        ORR R5, R5, #0x80
+        STRB R5, [R4]
+        AND R5, R5, #0x7F
+        STRB R5, [R4]
+        LDMFD R13!, {R5}
+        MOV PC, LR
+
+GPIO1 DW 0xFFFF0F00
+GPIO2 DW 0xFFFF0B00
+RTC DW 0xFFFF0E00
+timecon dw 2650
