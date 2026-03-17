@@ -46,8 +46,11 @@ while (content != ""):
     j=j+1
 cs=[]
 cs.append(pocetno)
+print(ulazi)
 str=""
 for i in range(len(ulazi)):
+    cs=[pocetno]
+    str=""
     for j in range(len(ulazi[i])):
         dalje = []
         if(j==0):
@@ -89,3 +92,4 @@ for i in range(len(ulazi)):
                 str = str + ","
             str = str + cs[k]
     print(str)
+    print("\n")
