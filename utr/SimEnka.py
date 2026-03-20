@@ -1,3 +1,5 @@
+#//////////////////////////////////////////////////////////////////////////
+import sys
 ulazi = []
 stanja = []
 abeceda = []
@@ -6,8 +8,8 @@ pocetno = 0
 prijelazi=[]
 content = " "
 j=0
-while (content != ""):
-    content=input()
+for content in sys.stdin:
+    content=content[:len(content)-1]
     if(j==0):
         ulazi1=content.split("|")
         for i in range(len(ulazi1)):
@@ -32,21 +34,19 @@ while (content != ""):
     elif(j==4):
         pocetno=content
     else:
-        if (content!=""):
-            pr=content.split(",")
-            st=stanja.index(pr[0])
-            pr2=pr[1].split("->")
-            up=pr2[0]
-            up=abeceda.index(up)
-            prijelazi[st][up][0] = pr2[1]
-            if(len(pr)>2):
-                for i in range(len(pr)-2):
-                    prijelazi[st][up].append(pr[i+2])
+        pr=content.split(",")
+        st=stanja.index(pr[0])
+        pr2=pr[1].split("->")
+        up=pr2[0]
+        up=abeceda.index(up)
+        prijelazi[st][up][0] = pr2[1]
+        if(len(pr)>2):
+            for i in range(len(pr)-2):
+                prijelazi[st][up].append(pr[i+2])
 
     j=j+1
 cs=[]
 cs.append(pocetno)
-print(ulazi)
 str=""
 for i in range(len(ulazi)):
     cs=[pocetno]
@@ -92,4 +92,3 @@ for i in range(len(ulazi)):
                 str = str + ","
             str = str + cs[k]
     print(str)
-    print("\n")
