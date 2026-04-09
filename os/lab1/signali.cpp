@@ -64,7 +64,7 @@ int bit_clear(int i, int n) {
 }
 
 void obradi_signal(int sig){
-    if (sig!=0) {
+    if (sig!=-1) {
         int i;
         cin>>i;
         K_Z=put_bit(K_Z,i-1);
@@ -115,12 +115,10 @@ int main(void){
 
     prt_state(K_Z,T_P,Stack);
     cout<<endl;
-
     while(true){
         ct--;
-        if (ct==0)obradi_signal(0);
-        sleep(2);
+        if (ct==0)obradi_signal(-1);
+        sleep(1);
     }
-
     return 0;
 }

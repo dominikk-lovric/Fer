@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #fff;
+}
+
+.wrapper {
+  width: 98vw;
+  height: 98vh;
+  position: absolute;
+  top: 1vh;
+  left: 1vw;
+  display: grid;
+  grid-template-columns: 98vw;
+  grid-template-rows: 8vh auto;
+  justify-content: stretch;
+  align-items: stretch;
+  gap: 1vh 1vw;
+}
+
+.kosarica {
+  width: 98vw;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  background-color: #bbb;
+}
+
+.header {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
