@@ -11,85 +11,37 @@
         <div class="logo">
           <img src="assets/images/logo.png" height="100%" />
         </div>
-        <div class="category-header">kategorija2</div>
+        <div class="category-header" id="header_text">
+          <p id="header_text"></p>
+        </div>
         <div class="header-icons">
           <div class="icon">
             <a href="cart.html"
-              ><img src="assets/images/basket.png" height="100%" width="100%"
+              ><img src="assets/images/basket.png" class="header-i" id="goCart"
             /></a>
+            <div class="circle" id="circpi">
+              <img src="assets/images/circl.png" width="50%" height="50%" />
+              <div class="circ-text" id="cti">0</div>
+            </div>
           </div>
           <div class="icon">
             <img src="assets/images/search.png" height="100%" width="100%" />
           </div>
         </div>
       </div>
-      <div class="sidebar">
-        <div class="category">Meso</div>
-        <div class="category">Voće</div>
-        <div class="category">Povrće</div>
-        <div class="category">Grickalice</div>
-        <div class="category">Bomboni</div>
-        <div class="category">Čokolada</div>
-        <div class="category">Pića</div>
-        <div class="category">Alkohol</div>
-        <div class="category">Pekara</div>
-        <div class="category">Čišćenje</div>
-      </div>
+      <div class="sidebar" id="categories"></div>
       <div class="info">
-        <p>Kontakt</p>
-        <p>Newsletter</p>
-        <p>Pretplati se</p>
+        <p class="info_text">Kontakt</p>
+        <p class="info_text">Newsletter</p>
+        <p class="info_text">Pretplati se</p>
       </div>
-      <div class="banner">
-        <img src="assets/images/store.jpg" class="banner-div" />
+      <div class="banner" id="bi">
+        <img src="assets/images/store.jpg" class="banner-div" id="bi2" />
+        <div class="banner-text">Dobrodošli u najfora dućan na feru😎</div>
       </div>
-      <div class="products">
-        <div class="product">
-          <img
-            src="assets/images/meat/m1.jpg"
-            class="product-img"
-            width="80%"
-            height="90%"
-          />
-          <p>Riba</p>
-        </div>
-        <div class="product">
-          <img
-            src="assets/images/meat/m2.jpg"
-            class="product-img"
-            width="80%"
-            height="90%"
-          />
-          <p>Odrezak</p>
-        </div>
-        <div class="product">
-          <img
-            src="assets/images/meat/m3.jpg"
-            class="product-img"
-            width="80%"
-            height="90%"
-          />
-          <p>Slanina</p>
-        </div>
-        <div class="product">
-          <img
-            src="assets/images/meat/m4.jpg"
-            class="product-img"
-            width="80%"
-            height="90%"
-          />
-          <p>Hrenovke</p>
-        </div>
-        <div class="product">
-          <img
-            src="assets/images/meat/m5.jpg"
-            class="product-img"
-            width="80%"
-            height="90%"
-          />
-          <p>Piletina</p>
-        </div>
-      </div>
+      <div class="products" id="pw"></div>
     </div>
+    <script type="text/javascript" src="scripts/data.js"></script>
+    <script type="text/javascript" src="scripts/script.js"></script>
   </body>
 </html>

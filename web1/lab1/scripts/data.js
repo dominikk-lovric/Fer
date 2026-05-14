@@ -2,263 +2,273 @@ const data = {
   website: "Hrana",
   categories: [
     {
-      name: "fruit",
-      image: "fruit.jpg",
+      name: "Voće",
+      path: "Voće",
+      image: "Voće.jpg",
       products: [
         {
-          name: "banana",
+          name: "Banana",
           image: "f1.jpg",
         },
         {
-          name: "apple",
+          name: "Naranča",
           image: "f2.jpg",
         },
         {
-          name: "orange",
+          name: "Jabuka",
           image: "f3.jpg",
         },
         {
-          name: "strawberry",
+          name: "Jagoda",
           image: "f4.jpg",
         },
         {
-          name: "blueberry",
+          name: "Borovnica",
           image: "f5.jpg",
         },
       ],
     },
     {
-      name: "vegetables",
-      image: "vegetables.jpg",
+      name: "Povrće",
+      path: "Povrće",
+      image: "Povrće.jpg",
       products: [
         {
-          name: "carrot",
+          name: "Mrkva",
           image: "v1.jpg",
         },
         {
-          name: "pepper",
+          name: "Paprika",
           image: "v2.jpg",
         },
         {
-          name: "potato",
+          name: "Krumpir",
           image: "v3.jpg",
         },
         {
-          name: "onion",
+          name: "Luk",
           image: "v4.jpg",
         },
         {
-          name: "broccoli",
+          name: "Brokula",
           image: "v5.jpg",
         },
       ],
     },
     {
-      name: "snacks",
-      image: "snacks.jpg",
+      name: "Grickalice",
+      path: "Grickalice",
+      image: "Grickalice.jpg",
       products: [
         {
-          name: "doritos",
+          name: "Doritos",
           image: "s1.jpg",
         },
         {
-          name: "lays",
+          name: "Lays",
           image: "s2.jpg",
         },
         {
-          name: "ruffles",
+          name: "Ruffles",
           image: "s3.jpg",
         },
         {
-          name: "goldfish",
+          name: "Goldfish",
           image: "s4.jpg",
         },
         {
-          name: "pringles",
+          name: "Pringles",
           image: "s5.jpg",
         },
       ],
     },
     {
-      name: "meat",
-      image: "meat.jpg",
+      name: "Meso",
+      path: "Meso",
+      image: "Meso.jpg",
       products: [
         {
-          name: "fish",
+          name: "Riba",
           image: "m1.jpg",
         },
         {
-          name: "steak",
+          name: "Odrezak",
           image: "m2.jpg",
         },
         {
-          name: "bacon",
+          name: "Slanina",
           image: "m3.jpg",
         },
         {
-          name: "sausages",
+          name: "Hrenovke",
           image: "m4.jpg",
         },
         {
-          name: "chicken",
+          name: "Piletina",
           image: "m5.jpg",
         },
       ],
     },
     {
-      name: "alcohol",
-      image: "alcohol.jpg",
+      name: "Alkohol",
+      path: "Alkohol",
+      image: "Alkohol.jpg",
       products: [
         {
-          name: "jim beam",
+          name: "Jim beam",
           image: "a1.jpg",
         },
         {
-          name: "jager",
+          name: "Jager",
           image: "a2.jpg",
         },
         {
-          name: "malibu",
+          name: "Malibu",
           image: "a3.jpg",
         },
         {
-          name: "jack daniels",
+          name: "Jack Daniels",
           image: "a4.jpg",
         },
         {
-          name: "corona",
+          name: "Corona",
           image: "a5.jpg",
         },
       ],
     },
     {
-      name: "baked goods",
-      image: "baked_goods.jpg",
+      name: "Pekara",
+      path: "Pekara",
+      image: "Pekara.jpg",
       products: [
         {
-          name: "burger bun",
+          name: "Kajzerica",
           image: "bg1.jpg",
         },
         {
-          name: "muffin",
+          name: "Muffin",
           image: "bg2.jpg",
         },
         {
-          name: "croissant",
+          name: "Kroasan",
           image: "bg3.jpg",
         },
         {
-          name: "pizza",
+          name: "Pizza",
           image: "bg4.jpg",
         },
         {
-          name: "bread",
+          name: "Kruh",
           image: "bg5.jpg",
         },
       ],
     },
 
     {
-      name: "candy",
-      image: "candy.jpg",
+      name: "Slatkiši",
+      path: "Slatkiši",
+      image: "Slatkiši.jpg",
       products: [
         {
-          name: "cola bottles",
+          name: "Gumene kole",
           image: "c1.jpg",
         },
         {
-          name: "bears",
+          name: "Gumeni medvjedići",
           image: "c2.jpg",
         },
         {
-          name: "skittles",
+          name: "Skittles",
           image: "c3.jpg",
         },
         {
-          name: "sour worms",
+          name: "Kiseli crvi",
           image: "c4.jpg",
         },
         {
-          name: "pez",
+          name: "Pez",
           image: "c5.jpg",
         },
       ],
     },
 
     {
-      name: "chocolate products",
-      image: "chocolate_products.jpg",
+      name: "Čokolada",
+      path: "Čokolada",
+      image: "Čokolada.jpg",
       products: [
         {
-          name: "kinder eg",
+          name: "Kinder jaje",
           image: "cp1.jpg",
         },
         {
-          name: "snickers",
+          name: "Snickers",
           image: "cp2.jpg",
         },
         {
-          name: "m&ms",
+          name: "M&M",
           image: "cp3.jpg",
         },
         {
-          name: "chocolate bar",
+          name: "Čokolada",
           image: "cp4.jpg",
         },
         {
-          name: "twix",
+          name: "Twix",
           image: "cp5.jpg",
         },
       ],
     },
     {
-      name: "cleaning supplies",
-      image: "cleaning_supplies.jpg",
+      name: "Čišćenje",
+      path: "Čišćenje",
+      image: "Čišćenje.jpg",
       products: [
         {
-          name: "dish soap",
+          name: "Detrdžent",
           image: "cs1.jpg",
         },
         {
-          name: "broom",
+          name: "Metla",
           image: "cs2.jpg",
         },
         {
-          name: "sponge",
+          name: "Spužva",
           image: "cs3.jpg",
         },
         {
-          name: "toilet paper",
+          name: "Toaletni papir",
           image: "cs4.jpg",
         },
         {
-          name: "mop",
+          name: "Džoger",
           image: "cs5.jpg",
         },
       ],
     },
     {
-      name: "juice",
-      image: "juice.jpg",
+      name: "Sok",
+      path: "Sok",
+      image: "Sok.jpg",
       products: [
         {
-          name: "fanta",
+          name: "Fanta",
           image: "j1.jpg",
         },
         {
-          name: "cola",
+          name: "Sprite",
           image: "j2.jpg",
         },
         {
-          name: "monster",
+          name: "Coca-Cola",
           image: "j3.jpg",
         },
         {
-          name: "sprite",
+          name: "Monster",
           image: "j4.jpg",
         },
         {
-          name: "red bull",
+          name: "Red bull",
           image: "j5.jpg",
         },
       ],
